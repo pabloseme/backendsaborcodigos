@@ -11,6 +11,7 @@ const login=async(req,res)=>{
         const usuario= await Usuario.findOne({email})
 
         console.log("hola");
+        console.log(usuario);
         if(!usuario){
             return res.status(400).json({
                 msg : "Email o Password incorrecto"
@@ -32,8 +33,9 @@ const login=async(req,res)=>{
             })
         }
 
-        //generar token active la linea de abajo para probar que me devuelva el token
-        const token= await generarJWT(usuario._id)
+        console.log('generar el token')
+        //generar token active la linea de abajo para probar que me devuelva el token  usuario._id
+        const token= await generarJWT('123456')
 
         res.status(200).json({
             usuario,
